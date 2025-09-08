@@ -1,0 +1,1499 @@
+{
+  "total_count": 181,
+  "results": [
+    {
+      "visibility": "domain",
+      "dataset_id": "consistance-reseau-ferroviaire-depuis-2003",
+      "dataset_uid": "da_vzkaos",
+      "has_records": true,
+      "features": [
+        "analyze",
+        "timeserie"
+      ],
+      "attachments": [],
+      "alternative_exports": [],
+      "data_visible": true,
+      "fields": [
+        {
+          "name": "empty",
+          "annotations": {
+            "timeserie_precision": "year"
+          },
+          "description": null,
+          "label": "Date",
+          "type": "date"
+        },
+        {
+          "name": "lignes",
+          "annotations": {
+            "unit": "km"
+          },
+          "description": null,
+          "label": "Lignes en exploitation",
+          "type": "int"
+        },
+        {
+          "name": "lignes_doubles_voies",
+          "annotations": {
+            "unit": "km"
+          },
+          "description": null,
+          "label": "Lignes à doubles voies",
+          "type": "int"
+        },
+        {
+          "name": "lignes_voie_unique",
+          "annotations": {
+            "unit": "km"
+          },
+          "description": null,
+          "label": "Lignes à voie unique",
+          "type": "int"
+        },
+        {
+          "name": "lignes_electrifiees",
+          "annotations": {
+            "unit": "km"
+          },
+          "description": null,
+          "label": "Lignes électrifiées",
+          "type": "int"
+        },
+        {
+          "name": "lignes_radio_sol_train",
+          "annotations": {
+            "unit": "km"
+          },
+          "description": null,
+          "label": "Lignes équipées de la radio sol-train",
+          "type": "int"
+        },
+        {
+          "name": "lignes_block_automatique",
+          "annotations": {
+            "unit": "km"
+          },
+          "description": null,
+          "label": "Lignes équipées de block automatique",
+          "type": "int"
+        }
+      ],
+      "metas": {
+        "dcat": {
+          "created": null,
+          "issued": "2014-07-07",
+          "creator": null,
+          "contributor": null,
+          "contact_name": null,
+          "contact_email": null,
+          "accrualperiodicity": null,
+          "spatial": null,
+          "temporal": "De 2003 à 2013",
+          "granularity": null,
+          "dataquality": null,
+          "publisher_type": null,
+          "conforms_to": null,
+          "temporal_coverage_start": null,
+          "temporal_coverage_end": null,
+          "accessRights": null,
+          "relation": null
+        },
+        "default": {
+          "title": "Consistance du réseau ferroviaire depuis 2003",
+          "description": "<p>Consistance du réseau ferroviaire de 2003 à 2013.</p><ul>\n<li>\"Lignes équipées de la radio sol-train\" : ce champ inclut également, depuis 2008, le GSM-R (Global System for Mobile communications – Railways), un standard de communication GSM adapté aux communications dans le secteur ferroviaire.</li><li>\"Lignes équipées de block automatique\" : dispositif de signalisation permettant d'espacer les trains. Compte tenu de leur masse importante et de leur vitesse, les trains ont besoin de grandes distances pour s’arrêter. Pour espacer les trains par la distance, la ligne est divisée en cantons, sachant qu'un seul train est admis dans le canton. L’entrée de chaque canton est commandée par un signal d’arrêt pouvant prendre la forme d'un block automatique. Dans ce cas, les essieux du train provoquent automatiquement la fermeture des signaux.</li></ul><p>Ces données sont issues du Rapport annuel Sécurité de l'exploitation  sur le réseau ferré national français. Publié chaque année, ce rapport  dresse le bilan des activités sécurité de l’entreprise et répond à  l’obligation d’information faite à SNCF selon les termes de l’article  17 du <a href=\"http://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000000788918\">décret n° 2006- 1279 du 19 octobre 2006</a> relatif à la sécurité des circulations ferroviaires et à l'interopérabilité du système ferroviaire.</p>",
+          "theme": [
+            "Réseau"
+          ],
+          "keyword": [
+            "Réseau",
+            "Infrastructure",
+            "Sécurité & Qualité de Service Ferroviaire"
+          ],
+          "license": "Open Database License (ODbL)",
+          "license_url": "https://data.sncf.com/pages/licence",
+          "language": "fr",
+          "metadata_languages": [
+            "fr"
+          ],
+          "timezone": null,
+          "modified": "2017-04-01T08:17:48+00:00",
+          "modified_updates_on_metadata_change": false,
+          "modified_updates_on_data_change": true,
+          "data_processed": "2017-04-01T08:17:48+00:00",
+          "metadata_processed": "2021-04-02T12:44:46.122000+00:00",
+          "geographic_reference": [
+            "world_fr"
+          ],
+          "geographic_reference_auto": true,
+          "territory": [
+            "France"
+          ],
+          "geometry_types": null,
+          "bbox": null,
+          "publisher": "SNCF Réseau",
+          "references": null,
+          "records_count": 11,
+          "attributions": null,
+          "source_domain": null,
+          "source_domain_title": null,
+          "source_domain_address": null,
+          "source_dataset": null,
+          "shared_catalog": null,
+          "federated": false,
+          "parent_domain": null,
+          "update_frequency": null
+        },
+        "custom": {
+          "cycle": null,
+          "periodicity": null,
+          "test-meta": null
+        }
+      }
+    },
+    {
+      "visibility": "domain",
+      "dataset_id": "charges-de-personnel-2017-cco",
+      "dataset_uid": "da_gugtxq",
+      "has_records": true,
+      "features": [
+        "analyze"
+      ],
+      "attachments": [],
+      "alternative_exports": [],
+      "data_visible": true,
+      "fields": [
+        {
+          "name": "id",
+          "label": "#",
+          "type": "int",
+          "annotations": {},
+          "description": null
+        },
+        {
+          "name": "totaux",
+          "label": "Totaux",
+          "type": "text",
+          "annotations": {},
+          "description": null
+        },
+        {
+          "name": "en_millions_d_euros",
+          "label": "en millions d'euros",
+          "type": "text",
+          "annotations": {},
+          "description": null
+        },
+        {
+          "name": "31_12_2015",
+          "annotations": {
+            "facetsort": "-count"
+          },
+          "label": "31/12/2015",
+          "type": "int",
+          "description": null
+        },
+        {
+          "name": "31_12_2016",
+          "annotations": {
+            "facetsort": "-count"
+          },
+          "label": "31/12/2016",
+          "type": "int",
+          "description": null
+        },
+        {
+          "name": "31_12_2017",
+          "annotations": {
+            "facetsort": "-count"
+          },
+          "label": "31/12/2017",
+          "type": "int",
+          "description": null
+        },
+        {
+          "name": "31_12_2018",
+          "annotations": {
+            "facetsort": "-count"
+          },
+          "label": "31/12/2018",
+          "type": "int",
+          "description": null
+        },
+        {
+          "name": "31_12_2019",
+          "label": "31/12/2019",
+          "type": "text",
+          "annotations": {},
+          "description": null
+        },
+        {
+          "name": "31_12_2020",
+          "label": "31/12/2020",
+          "type": "text",
+          "annotations": {},
+          "description": null
+        }
+      ],
+      "metas": {
+        "dcat": {
+          "created": null,
+          "issued": null,
+          "creator": null,
+          "contributor": null,
+          "contact_name": null,
+          "contact_email": null,
+          "accrualperiodicity": null,
+          "spatial": null,
+          "temporal": null,
+          "granularity": null,
+          "dataquality": null,
+          "publisher_type": null,
+          "conforms_to": null,
+          "temporal_coverage_start": null,
+          "temporal_coverage_end": null,
+          "accessRights": null,
+          "relation": null
+        },
+        "default": {
+          "title": "Charges de personnel CCO du groupe SNCF Réseau depuis 2015",
+          "description": "<p>Charges de personnel depuis 2015 issues du Rapport Financier du groupe SNCF Réseau au 31 décembre de chaque année (Comptes consolidés incluant l'EPIC SNCF RESEAU et ses filiales)</p>",
+          "theme": [
+            "Réseau"
+          ],
+          "keyword": [
+            "SNCF RESEAU",
+            "Comptes Consolidés",
+            "Charges",
+            "personnel",
+            "Charges de personnel"
+          ],
+          "license": "Open Database License (ODbL)",
+          "license_url": "https://data.sncf.com/pages/licence",
+          "language": "fr",
+          "metadata_languages": [
+            "fr"
+          ],
+          "timezone": null,
+          "modified": "2022-03-24T10:41:33+00:00",
+          "modified_updates_on_metadata_change": true,
+          "modified_updates_on_data_change": true,
+          "data_processed": "2021-07-01T13:24:47+00:00",
+          "metadata_processed": "2025-09-03T01:13:50.616000+00:00",
+          "geographic_reference": [
+            "world_fr"
+          ],
+          "geographic_reference_auto": true,
+          "territory": [
+            "France"
+          ],
+          "geometry_types": null,
+          "bbox": null,
+          "publisher": "SNCF Réseau",
+          "references": null,
+          "records_count": 5,
+          "attributions": null,
+          "source_domain": null,
+          "source_domain_title": null,
+          "source_domain_address": null,
+          "source_dataset": null,
+          "shared_catalog": null,
+          "federated": true,
+          "parent_domain": "datasncf",
+          "update_frequency": null
+        },
+        "custom": {
+          "cycle": null,
+          "periodicity": "Annuelle",
+          "test-meta": null
+        }
+      }
+    },
+    {
+      "visibility": "domain",
+      "dataset_id": "emprunts-sncf-2017-cco",
+      "dataset_uid": "da_x37mzi",
+      "has_records": true,
+      "features": [
+        "timeserie",
+        "analyze"
+      ],
+      "attachments": [],
+      "alternative_exports": [],
+      "data_visible": true,
+      "fields": [
+        {
+          "name": "id",
+          "label": "#",
+          "type": "int",
+          "annotations": {},
+          "description": null
+        },
+        {
+          "name": "totaux",
+          "label": "Totaux",
+          "type": "text",
+          "annotations": {},
+          "description": null
+        },
+        {
+          "name": "annee",
+          "annotations": {
+            "facetsort": "-count",
+            "timeserie_precision": "day"
+          },
+          "label": "Année",
+          "type": "text",
+          "description": null
+        },
+        {
+          "name": "date",
+          "label": "Date",
+          "type": "date",
+          "annotations": {},
+          "description": null
+        },
+        {
+          "name": "postes",
+          "label": "Postes",
+          "type": "text",
+          "annotations": {},
+          "description": null
+        },
+        {
+          "name": "operations",
+          "label": "Opérations",
+          "type": "text",
+          "annotations": {},
+          "description": null
+        },
+        {
+          "name": "en_millions_d_euros_devise",
+          "label": "en millions d'euros / devise",
+          "type": "text",
+          "annotations": {},
+          "description": null
+        }
+      ],
+      "metas": {
+        "dcat": {
+          "created": null,
+          "issued": null,
+          "creator": null,
+          "contributor": null,
+          "contact_name": null,
+          "contact_email": null,
+          "accrualperiodicity": null,
+          "spatial": null,
+          "temporal": null,
+          "granularity": null,
+          "dataquality": null,
+          "publisher_type": null,
+          "conforms_to": null,
+          "temporal_coverage_start": null,
+          "temporal_coverage_end": null,
+          "accessRights": null,
+          "relation": null
+        },
+        "default": {
+          "title": "Emprunts SNCF CCO du groupe SNCF Réseau depuis 2015",
+          "description": "<p>Emprunts SNCF depuis 2015 issus du Rapport Financier du groupe SNCF Réseau au 31 décembre de chaque année (Comptes consolidés incluant l'EPIC SNCF RESEAU et ses filiales)</p>",
+          "theme": [
+            "Réseau"
+          ],
+          "keyword": [
+            "SNCF RESEAU",
+            "Comptes Consolidés",
+            "Emprunt",
+            "Emprunts SNCF"
+          ],
+          "license": "Open Database License (ODbL)",
+          "license_url": "https://data.sncf.com/pages/licence",
+          "language": "fr",
+          "metadata_languages": [
+            "fr"
+          ],
+          "timezone": null,
+          "modified": "2022-03-24T09:57:44+00:00",
+          "modified_updates_on_metadata_change": true,
+          "modified_updates_on_data_change": true,
+          "data_processed": "2021-06-29T09:57:33+00:00",
+          "metadata_processed": "2025-09-03T01:13:10.610000+00:00",
+          "geographic_reference": [
+            "world_fr"
+          ],
+          "geographic_reference_auto": true,
+          "territory": [
+            "France"
+          ],
+          "geometry_types": null,
+          "bbox": null,
+          "publisher": "SNCF Réseau",
+          "references": null,
+          "records_count": 72,
+          "attributions": null,
+          "source_domain": null,
+          "source_domain_title": null,
+          "source_domain_address": null,
+          "source_dataset": null,
+          "shared_catalog": null,
+          "federated": true,
+          "parent_domain": "datasncf",
+          "update_frequency": null
+        },
+        "custom": {
+          "cycle": null,
+          "periodicity": "Annuelle",
+          "test-meta": null
+        }
+      }
+    },
+    {
+      "visibility": "domain",
+      "dataset_id": "engagements-hors-bilan-recus-2017-cco",
+      "dataset_uid": "da_a9tt7p",
+      "has_records": true,
+      "features": [
+        "timeserie",
+        "analyze"
+      ],
+      "attachments": [],
+      "alternative_exports": [],
+      "data_visible": true,
+      "fields": [
+        {
+          "name": "id",
+          "label": "#",
+          "type": "int",
+          "annotations": {},
+          "description": null
+        },
+        {
+          "name": "totaux",
+          "label": "Totaux",
+          "type": "text",
+          "annotations": {},
+          "description": null
+        },
+        {
+          "name": "annee",
+          "label": "Année",
+          "type": "text",
+          "annotations": {},
+          "description": null
+        },
+        {
+          "name": "date",
+          "label": "Date",
+          "type": "date",
+          "annotations": {},
+          "description": null
+        },
+        {
+          "name": "postes",
+          "label": "Postes",
+          "type": "text",
+          "annotations": {},
+          "description": null
+        },
+        {
+          "name": "operations",
+          "label": "Opérations",
+          "type": "text",
+          "annotations": {},
+          "description": null
+        },
+        {
+          "name": "engagements_recus_en_millions_d_euros",
+          "label": "Engagements reçus en millions d'euros",
+          "type": "text",
+          "annotations": {},
+          "description": null
+        }
+      ],
+      "metas": {
+        "dcat": {
+          "created": null,
+          "issued": null,
+          "creator": null,
+          "contributor": null,
+          "contact_name": null,
+          "contact_email": null,
+          "accrualperiodicity": null,
+          "spatial": null,
+          "temporal": null,
+          "granularity": null,
+          "dataquality": null,
+          "publisher_type": null,
+          "conforms_to": null,
+          "temporal_coverage_start": null,
+          "temporal_coverage_end": null,
+          "accessRights": null,
+          "relation": null
+        },
+        "default": {
+          "title": "Engagements hors bilan reçus CCO du groupe SNCF Réseau depuis 2015",
+          "description": "<p>EHB reçus depuis 2015 issus du Rapport Financier du groupe SNCF Réseau au 31 décembre de chaque année (Comptes consolidés incluant l'EPIC SNCF RESEAU et ses filiales)</p>",
+          "theme": [
+            "Réseau"
+          ],
+          "keyword": [
+            "SNCF RESEAU",
+            "Comptes Consolidés",
+            "EHB",
+            "EHB reçus"
+          ],
+          "license": "Open Database License (ODbL)",
+          "license_url": "https://data.sncf.com/pages/licence",
+          "language": "fr",
+          "metadata_languages": [
+            "fr"
+          ],
+          "timezone": null,
+          "modified": "2022-03-24T09:54:59+00:00",
+          "modified_updates_on_metadata_change": true,
+          "modified_updates_on_data_change": true,
+          "data_processed": "2021-07-01T13:37:31+00:00",
+          "metadata_processed": "2025-09-03T01:14:06.217000+00:00",
+          "geographic_reference": [
+            "world_fr"
+          ],
+          "geographic_reference_auto": true,
+          "territory": [
+            "France"
+          ],
+          "geometry_types": null,
+          "bbox": null,
+          "publisher": "SNCF Réseau",
+          "references": null,
+          "records_count": 330,
+          "attributions": null,
+          "source_domain": null,
+          "source_domain_title": null,
+          "source_domain_address": null,
+          "source_dataset": null,
+          "shared_catalog": null,
+          "federated": true,
+          "parent_domain": "datasncf",
+          "update_frequency": null
+        },
+        "custom": {
+          "cycle": null,
+          "periodicity": "Annuelle",
+          "test-meta": null
+        }
+      }
+    },
+    {
+      "visibility": "domain",
+      "dataset_id": "source-ca-2015",
+      "dataset_uid": "da_xdxz9g",
+      "has_records": true,
+      "features": [
+        "analyze"
+      ],
+      "attachments": [],
+      "alternative_exports": [],
+      "data_visible": true,
+      "fields": [
+        {
+          "name": "sources_ca",
+          "annotations": {
+            "facet": true
+          },
+          "description": null,
+          "label": "Sources CA",
+          "type": "text"
+        },
+        {
+          "name": "sncf_reseau",
+          "annotations": {
+            "facetsort": "-count"
+          },
+          "description": null,
+          "label": "SNCF RESEAU",
+          "type": "double"
+        },
+        {
+          "name": "sncf_voyageurs",
+          "annotations": {
+            "facetsort": "-count"
+          },
+          "description": null,
+          "label": "SNCF VOYAGEURS",
+          "type": "double"
+        },
+        {
+          "name": "sncf_logistics",
+          "annotations": {
+            "facetsort": "-count"
+          },
+          "description": null,
+          "label": "SNCF LOGISTICS",
+          "type": "double"
+        },
+        {
+          "name": "keolis",
+          "annotations": {
+            "facetsort": "-count",
+            "timeserie_precision": "hour"
+          },
+          "description": null,
+          "label": "KEOLIS",
+          "type": "double"
+        },
+        {
+          "name": "sncf_immobilier",
+          "annotations": {
+            "facetsort": "-count"
+          },
+          "description": null,
+          "label": "SNCF IMMOBILIER",
+          "type": "double"
+        },
+        {
+          "name": "corporate",
+          "annotations": {
+            "facetsort": "-count"
+          },
+          "description": null,
+          "label": "CORPORATE",
+          "type": "double"
+        },
+        {
+          "name": "groupe",
+          "annotations": {
+            "facetsort": "-count"
+          },
+          "description": null,
+          "label": "GROUPE",
+          "type": "double"
+        }
+      ],
+      "metas": {
+        "dcat": {
+          "created": null,
+          "issued": null,
+          "creator": null,
+          "contributor": null,
+          "contact_name": null,
+          "contact_email": null,
+          "accrualperiodicity": null,
+          "spatial": null,
+          "temporal": null,
+          "granularity": null,
+          "dataquality": null,
+          "publisher_type": null,
+          "conforms_to": null,
+          "temporal_coverage_start": null,
+          "temporal_coverage_end": null,
+          "accessRights": null,
+          "relation": null
+        },
+        "default": {
+          "title": "Répartition du chiffre d'affaires (en milliards d'euros) du groupe SNCF par métier en 2015",
+          "description": "<p>Source du chiffre d'affaire 2015 (en milliards d'euros).</p><p>NB : les normes comptables appliquées ici sont les normes françaises avant 2007 et IFRS ensuite</p>",
+          "theme": [
+            "Informations institutionnelles et financières"
+          ],
+          "keyword": [
+            "Chiffre d'affaire",
+            "SNCF"
+          ],
+          "license": "Open Database License (ODbL)",
+          "license_url": "https://data.sncf.com/pages/licence",
+          "language": "fr",
+          "metadata_languages": [
+            "fr"
+          ],
+          "timezone": null,
+          "modified": "2017-05-17T08:16:32+00:00",
+          "modified_updates_on_metadata_change": false,
+          "modified_updates_on_data_change": true,
+          "data_processed": "2017-05-17T08:16:32+00:00",
+          "metadata_processed": "2021-03-31T08:26:22.112000+00:00",
+          "geographic_reference": [
+            "world_fr"
+          ],
+          "geographic_reference_auto": true,
+          "territory": [
+            "France"
+          ],
+          "geometry_types": null,
+          "bbox": null,
+          "publisher": "SNCF",
+          "references": null,
+          "records_count": 5,
+          "attributions": null,
+          "source_domain": null,
+          "source_domain_title": null,
+          "source_domain_address": null,
+          "source_dataset": null,
+          "shared_catalog": null,
+          "federated": false,
+          "parent_domain": null,
+          "update_frequency": null
+        },
+        "custom": {
+          "cycle": null,
+          "periodicity": null,
+          "test-meta": null
+        }
+      }
+    },
+    {
+      "visibility": "domain",
+      "dataset_id": "bilan-actif-2017-cco",
+      "dataset_uid": "da_ir64fm",
+      "has_records": true,
+      "features": [
+        "analyze"
+      ],
+      "attachments": [],
+      "alternative_exports": [],
+      "data_visible": true,
+      "fields": [
+        {
+          "name": "id",
+          "label": "#",
+          "type": "int",
+          "annotations": {},
+          "description": null
+        },
+        {
+          "name": "totaux",
+          "label": "Totaux",
+          "type": "text",
+          "annotations": {},
+          "description": null
+        },
+        {
+          "name": "en_millions_d_euros",
+          "label": "en millions d'euros",
+          "type": "text",
+          "annotations": {},
+          "description": null
+        },
+        {
+          "name": "31_12_2015",
+          "annotations": {
+            "facetsort": "-count"
+          },
+          "label": "31/12/2015",
+          "type": "int",
+          "description": null
+        },
+        {
+          "name": "31_12_2016",
+          "annotations": {
+            "facetsort": "-count"
+          },
+          "label": "31/12/2016",
+          "type": "int",
+          "description": null
+        },
+        {
+          "name": "31_12_2017",
+          "annotations": {
+            "facetsort": "-count"
+          },
+          "label": "31/12/2017",
+          "type": "int",
+          "description": null
+        },
+        {
+          "name": "31_12_2018",
+          "annotations": {
+            "facetsort": "-count"
+          },
+          "label": "31/12/2018",
+          "type": "int",
+          "description": null
+        },
+        {
+          "name": "31_12_2019",
+          "label": "31/12/2019",
+          "type": "text",
+          "annotations": {},
+          "description": null
+        },
+        {
+          "name": "31_12_2020",
+          "label": "31/12/2020",
+          "type": "text",
+          "annotations": {},
+          "description": null
+        },
+        {
+          "name": "column_10",
+          "label": "Column 10",
+          "type": "text",
+          "annotations": {},
+          "description": null
+        },
+        {
+          "name": "column_11",
+          "label": "Column 11",
+          "type": "text",
+          "annotations": {},
+          "description": null
+        },
+        {
+          "name": "column_12",
+          "label": "Column 12",
+          "type": "text",
+          "annotations": {},
+          "description": null
+        },
+        {
+          "name": "column_13",
+          "label": "Column 13",
+          "type": "text",
+          "annotations": {},
+          "description": null
+        },
+        {
+          "name": "column_14",
+          "label": "Column 14",
+          "type": "text",
+          "annotations": {},
+          "description": null
+        },
+        {
+          "name": "column_15",
+          "label": "Column 15",
+          "type": "text",
+          "annotations": {},
+          "description": null
+        },
+        {
+          "name": "column_16",
+          "label": "Column 16",
+          "type": "text",
+          "annotations": {},
+          "description": null
+        },
+        {
+          "name": "column_17",
+          "label": "Column 17",
+          "type": "text",
+          "annotations": {},
+          "description": null
+        },
+        {
+          "name": "column_18",
+          "label": "Column 18",
+          "type": "text",
+          "annotations": {},
+          "description": null
+        }
+      ],
+      "metas": {
+        "dcat": {
+          "created": null,
+          "issued": null,
+          "creator": null,
+          "contributor": null,
+          "contact_name": null,
+          "contact_email": null,
+          "accrualperiodicity": null,
+          "spatial": null,
+          "temporal": null,
+          "granularity": null,
+          "dataquality": null,
+          "publisher_type": null,
+          "conforms_to": null,
+          "temporal_coverage_start": null,
+          "temporal_coverage_end": null,
+          "accessRights": null,
+          "relation": null
+        },
+        "default": {
+          "title": "Bilan actif CCO du groupe SNCF Réseau depuis 2015",
+          "description": "<p>Bilan actif depuis 2015 issu des Rapports Financiers du groupe SNCF Réseau au 31 décembre de chaque année (Comptes consolidés incluant l'EPIC SNCF RESEAU et ses filiales).</p>",
+          "theme": [
+            "Réseau"
+          ],
+          "keyword": [
+            "SNCF RESEAU",
+            "Comptes Consolidés",
+            "Bilan",
+            "Actif"
+          ],
+          "license": "Open Database License (ODbL)",
+          "license_url": "https://data.sncf.com/pages/licence",
+          "language": "fr",
+          "metadata_languages": [
+            "fr"
+          ],
+          "timezone": null,
+          "modified": "2022-03-24T10:09:10+00:00",
+          "modified_updates_on_metadata_change": true,
+          "modified_updates_on_data_change": true,
+          "data_processed": "2021-06-29T07:52:22+00:00",
+          "metadata_processed": "2025-09-03T01:12:43.603000+00:00",
+          "geographic_reference": [
+            "world_fr"
+          ],
+          "geographic_reference_auto": true,
+          "territory": [
+            "France"
+          ],
+          "geometry_types": null,
+          "bbox": null,
+          "publisher": "SNCF Réseau",
+          "references": null,
+          "records_count": 14,
+          "attributions": null,
+          "source_domain": null,
+          "source_domain_title": null,
+          "source_domain_address": null,
+          "source_dataset": null,
+          "shared_catalog": null,
+          "federated": true,
+          "parent_domain": "datasncf",
+          "update_frequency": null
+        },
+        "custom": {
+          "cycle": null,
+          "periodicity": "Annuelle",
+          "test-meta": null
+        }
+      }
+    },
+    {
+      "visibility": "domain",
+      "dataset_id": "echeancier-subventions-2017-cco",
+      "dataset_uid": "da_gnjcg2",
+      "has_records": true,
+      "features": [
+        "analyze"
+      ],
+      "attachments": [],
+      "alternative_exports": [],
+      "data_visible": true,
+      "fields": [
+        {
+          "name": "id",
+          "label": "#",
+          "type": "int",
+          "annotations": {},
+          "description": null
+        },
+        {
+          "name": "en_millions_d_euros",
+          "label": "en millions d'euros",
+          "type": "text",
+          "annotations": {},
+          "description": null
+        },
+        {
+          "name": "non_echus",
+          "label": "Non échus",
+          "type": "double",
+          "annotations": {},
+          "description": null
+        },
+        {
+          "name": "deprecies",
+          "label": "Dépréciés",
+          "type": "double",
+          "annotations": {},
+          "description": null
+        },
+        {
+          "name": "echus_non_deprecies_3_mois",
+          "label": "Echus non dépréciés < 3 mois",
+          "type": "double",
+          "annotations": {},
+          "description": null
+        },
+        {
+          "name": "echus_non_deprecies_de_4_a_6_mois",
+          "label": "Echus non dépréciés de 4 à 6 mois",
+          "type": "double",
+          "annotations": {},
+          "description": null
+        },
+        {
+          "name": "echus_non_deprecies_de_7_a_12_mois",
+          "label": "Echus non dépréciés de 7 à 12 mois",
+          "type": "double",
+          "annotations": {},
+          "description": null
+        },
+        {
+          "name": "echus_non_deprecies_12_mois",
+          "label": "Echus non dépréciés > 12 mois",
+          "type": "double",
+          "annotations": {},
+          "description": null
+        },
+        {
+          "name": "total",
+          "label": "Total",
+          "type": "text",
+          "annotations": {},
+          "description": null
+        }
+      ],
+      "metas": {
+        "dcat": {
+          "created": null,
+          "issued": null,
+          "creator": null,
+          "contributor": null,
+          "contact_name": null,
+          "contact_email": null,
+          "accrualperiodicity": null,
+          "spatial": null,
+          "temporal": null,
+          "granularity": null,
+          "dataquality": null,
+          "publisher_type": null,
+          "conforms_to": null,
+          "temporal_coverage_start": null,
+          "temporal_coverage_end": null,
+          "accessRights": null,
+          "relation": null
+        },
+        "default": {
+          "title": "Échéancier subventions CCO du groupe SNCF Réseau depuis 2015",
+          "description": "<p>Échéancier subventions depuis 2015 issu du Rapport Financier du groupe SNCF Réseau au 31 décembre de chaque année (Comptes consolidés incluant l'EPIC SNCF RESEAU et ses filiales)</p>",
+          "theme": [
+            "Réseau"
+          ],
+          "keyword": [
+            "SNCF RESEAU",
+            "Comptes Consolidés",
+            "Subventions",
+            "Echéancier subventions"
+          ],
+          "license": "Open Database License (ODbL)",
+          "license_url": "https://data.sncf.com/pages/licence",
+          "language": "fr",
+          "metadata_languages": [
+            "fr"
+          ],
+          "timezone": null,
+          "modified": "2022-03-24T10:32:09+00:00",
+          "modified_updates_on_metadata_change": true,
+          "modified_updates_on_data_change": true,
+          "data_processed": "2021-06-29T09:32:10+00:00",
+          "metadata_processed": "2025-09-03T01:12:55.604000+00:00",
+          "geographic_reference": [
+            "world_fr"
+          ],
+          "geographic_reference_auto": true,
+          "territory": [
+            "France"
+          ],
+          "geometry_types": null,
+          "bbox": null,
+          "publisher": "SNCF Réseau",
+          "references": null,
+          "records_count": 6,
+          "attributions": null,
+          "source_domain": null,
+          "source_domain_title": null,
+          "source_domain_address": null,
+          "source_dataset": null,
+          "shared_catalog": null,
+          "federated": true,
+          "parent_domain": "datasncf",
+          "update_frequency": null
+        },
+        "custom": {
+          "cycle": null,
+          "periodicity": "Annuelle",
+          "test-meta": null
+        }
+      }
+    },
+    {
+      "visibility": "domain",
+      "dataset_id": "equipements-accessibilite-sncf",
+      "dataset_uid": "da_zlfdn1",
+      "has_records": true,
+      "features": [],
+      "attachments": [],
+      "alternative_exports": [],
+      "data_visible": true,
+      "fields": [
+        {
+          "name": "column_1",
+          "annotations": {},
+          "description": null,
+          "label": "Equipement",
+          "type": "text"
+        },
+        {
+          "name": "column_2",
+          "annotations": {},
+          "description": null,
+          "label": "Définition",
+          "type": "text"
+        }
+      ],
+      "metas": {
+        "dcat": {
+          "created": null,
+          "issued": "2013-12-07",
+          "creator": null,
+          "contributor": null,
+          "contact_name": null,
+          "contact_email": null,
+          "accrualperiodicity": null,
+          "spatial": null,
+          "temporal": null,
+          "granularity": "Par équipement",
+          "dataquality": null,
+          "publisher_type": null,
+          "conforms_to": null,
+          "temporal_coverage_start": null,
+          "temporal_coverage_end": null,
+          "accessRights": null,
+          "relation": null
+        },
+        "default": {
+          "title": "Référentiel des équipements d'accessibilité dans les gares et les trains",
+          "description": "<p style=\"text-align: justify;\">\n\t     Liste et définition des équipements présents dans les gares et dans les trains SNCF pour améliorer l’accessibilité des voyageurs.</p><p style=\"text-align: justify;\">\n\t    Ces équipements sont pour la plupart issus du travail de concertation de la <a href=\"http://www.accessibilite.sncf.com/\" target=\"_blank\">Délégation à l'accessibilité et aux voyageurs handicapés</a> avec les associations de personnes handicapées.</p><hr id=\"horizontalrule\"/>",
+          "theme": [
+            "Informations Institutionnelles"
+          ],
+          "keyword": [
+            "Equipement",
+            "Accessibilité",
+            "Gare de voyageurs",
+            "Train",
+            "accessibilité aux voyageurs handicapés"
+          ],
+          "license": "Open Database License (ODbL)",
+          "license_url": "https://data.sncf.com/pages/licence",
+          "language": "fr",
+          "metadata_languages": [
+            "fr"
+          ],
+          "timezone": null,
+          "modified": "2018-01-18T09:32:27+00:00",
+          "modified_updates_on_metadata_change": false,
+          "modified_updates_on_data_change": true,
+          "data_processed": "2018-01-18T09:32:27+00:00",
+          "metadata_processed": "2021-04-08T09:15:37.032000+00:00",
+          "geographic_reference": [
+            "world_fr"
+          ],
+          "geographic_reference_auto": true,
+          "territory": [
+            "France"
+          ],
+          "geometry_types": null,
+          "bbox": null,
+          "publisher": "SNCF",
+          "references": null,
+          "records_count": 30,
+          "attributions": null,
+          "source_domain": null,
+          "source_domain_title": null,
+          "source_domain_address": null,
+          "source_dataset": null,
+          "shared_catalog": null,
+          "federated": false,
+          "parent_domain": null,
+          "update_frequency": null
+        },
+        "custom": {
+          "cycle": null,
+          "periodicity": null,
+          "test-meta": null
+        }
+      }
+    },
+    {
+      "visibility": "domain",
+      "dataset_id": "recrutement-metiers-sncf",
+      "dataset_uid": "da_agwgp7",
+      "has_records": true,
+      "features": [
+        "timeserie",
+        "analyze"
+      ],
+      "attachments": [],
+      "alternative_exports": [],
+      "data_visible": true,
+      "fields": [
+        {
+          "name": "date",
+          "description": null,
+          "annotations": {
+            "facet": true,
+            "facetsort": "-count",
+            "timeserie_precision": "year"
+          },
+          "label": "Date",
+          "type": "date"
+        },
+        {
+          "name": "metiers",
+          "description": null,
+          "annotations": {
+            "facet": true,
+            "sortable": true
+          },
+          "label": "Métiers",
+          "type": "text"
+        },
+        {
+          "name": "contrat_travail",
+          "description": null,
+          "annotations": {
+            "facet": true
+          },
+          "label": "Contrat de travail",
+          "type": "text"
+        },
+        {
+          "name": "sexe",
+          "description": null,
+          "annotations": {
+            "facet": true
+          },
+          "label": "Sexe",
+          "type": "text"
+        },
+        {
+          "name": "recrutement",
+          "description": "Les postes pourvus en mobilité interne ne sont pas inclus dans ce calcul",
+          "annotations": {
+            "facetsort": "-count"
+          },
+          "label": "Recrutement",
+          "type": "int"
+        }
+      ],
+      "metas": {
+        "dcat": {
+          "created": "2016-03-01",
+          "issued": "2016-03-03",
+          "creator": null,
+          "contributor": null,
+          "contact_name": null,
+          "contact_email": null,
+          "accrualperiodicity": "Annuelle ",
+          "spatial": null,
+          "temporal": "Depuis 2012",
+          "granularity": "Par métiers",
+          "dataquality": null,
+          "publisher_type": null,
+          "conforms_to": null,
+          "temporal_coverage_start": null,
+          "temporal_coverage_end": null,
+          "accessRights": null,
+          "relation": null
+        },
+        "default": {
+          "title": "Recrutements SNCF par métiers",
+          "description": "<p>Recrutements  depuis 2012, classés par métiers SNCF.</p><p>Ces données intègrent les salariés au statut (dit \"statut du cadre permanent\") et les salariés sous contrat. </p><p>\n\n</p><p><b>A partir de 2019, le type d’effectif prise en compte par\nle Bilan Social a été modifié : les effectifs présentés sont les effectifs\ntotaux ( et non plus les effectifs « réels).</b></p><p>\n\n<b></b><i></i><u></u><sub></sub><sup></sup><strike></strike><br/></p>",
+          "theme": [
+            "Social et ressources humaines"
+          ],
+          "keyword": [
+            "Recrutement ",
+            "Salariés",
+            "Ressources humaines",
+            "Direction Cohésion"
+          ],
+          "license": "Open Database License (ODbL)",
+          "license_url": "https://data.sncf.com/pages/licence",
+          "language": "fr",
+          "metadata_languages": [
+            "fr"
+          ],
+          "timezone": null,
+          "modified": "2024-11-12T16:18:42+00:00",
+          "modified_updates_on_metadata_change": false,
+          "modified_updates_on_data_change": true,
+          "data_processed": "2024-11-12T16:18:42+00:00",
+          "metadata_processed": "2024-11-12T16:18:43.020000+00:00",
+          "geographic_reference": [
+            "world_fr"
+          ],
+          "geographic_reference_auto": true,
+          "territory": [
+            "France"
+          ],
+          "geometry_types": null,
+          "bbox": null,
+          "publisher": "SNCF",
+          "references": null,
+          "records_count": 212,
+          "attributions": null,
+          "source_domain": null,
+          "source_domain_title": null,
+          "source_domain_address": null,
+          "source_dataset": null,
+          "shared_catalog": null,
+          "federated": false,
+          "parent_domain": null,
+          "update_frequency": null
+        },
+        "custom": {
+          "cycle": null,
+          "periodicity": "Annuelle",
+          "test-meta": null
+        }
+      }
+    },
+    {
+      "visibility": "domain",
+      "dataset_id": "impots-et-taxes-2017-cco",
+      "dataset_uid": "da_qkvr9a",
+      "has_records": true,
+      "features": [
+        "analyze"
+      ],
+      "attachments": [],
+      "alternative_exports": [],
+      "data_visible": true,
+      "fields": [
+        {
+          "name": "id",
+          "label": "#",
+          "type": "int",
+          "annotations": {},
+          "description": null
+        },
+        {
+          "name": "totaux",
+          "label": "Totaux",
+          "type": "text",
+          "annotations": {},
+          "description": null
+        },
+        {
+          "name": "en_millions_d_euros",
+          "label": "en millions d'euros",
+          "type": "text",
+          "annotations": {},
+          "description": null
+        },
+        {
+          "name": "31_12_2015",
+          "label": "31/12/2015",
+          "type": "double",
+          "annotations": {},
+          "description": null
+        },
+        {
+          "name": "31_12_2016",
+          "label": "31/12/2016",
+          "type": "double",
+          "annotations": {},
+          "description": null
+        },
+        {
+          "name": "31_12_2017",
+          "annotations": {
+            "unit": "mois",
+            "facetsort": "-count"
+          },
+          "label": "31/12/2017",
+          "type": "text",
+          "description": null
+        },
+        {
+          "name": "31_12_2018",
+          "label": "31/12/2018",
+          "type": "double",
+          "annotations": {},
+          "description": null
+        },
+        {
+          "name": "31_12_2019",
+          "label": "31/12/2019",
+          "type": "double",
+          "annotations": {},
+          "description": null
+        },
+        {
+          "name": "31_12_2020",
+          "label": "31/12/2020",
+          "type": "double",
+          "annotations": {},
+          "description": null
+        }
+      ],
+      "metas": {
+        "dcat": {
+          "created": null,
+          "issued": null,
+          "creator": null,
+          "contributor": null,
+          "contact_name": null,
+          "contact_email": null,
+          "accrualperiodicity": null,
+          "spatial": null,
+          "temporal": null,
+          "granularity": null,
+          "dataquality": null,
+          "publisher_type": null,
+          "conforms_to": null,
+          "temporal_coverage_start": null,
+          "temporal_coverage_end": null,
+          "accessRights": null,
+          "relation": null
+        },
+        "default": {
+          "title": "Impôts et taxes CCO du groupe SNCF Réseau depuis 2015",
+          "description": "<p>Impôts et taxes depuis 2015 issus du Rapport Financier du groupe SNCF Réseau au 31 décembre de chaque année (Comptes consolidés incluant l'EPIC SNCF RESEAU et ses filiales)</p>",
+          "theme": [
+            "Réseau"
+          ],
+          "keyword": [
+            "SNCF RESEAU",
+            "Comptes Consolidés",
+            "impôts",
+            "taxes"
+          ],
+          "license": "Open Database License (ODbL)",
+          "license_url": "https://data.sncf.com/pages/licence",
+          "language": "fr",
+          "metadata_languages": [
+            "fr"
+          ],
+          "timezone": null,
+          "modified": "2022-03-24T10:36:20+00:00",
+          "modified_updates_on_metadata_change": true,
+          "modified_updates_on_data_change": true,
+          "data_processed": "2021-07-01T13:27:20+00:00",
+          "metadata_processed": "2025-09-03T01:13:53.616000+00:00",
+          "geographic_reference": [
+            "world_fr"
+          ],
+          "geographic_reference_auto": true,
+          "territory": [
+            "France"
+          ],
+          "geometry_types": null,
+          "bbox": null,
+          "publisher": "SNCF Réseau",
+          "references": null,
+          "records_count": 10,
+          "attributions": null,
+          "source_domain": null,
+          "source_domain_title": null,
+          "source_domain_address": null,
+          "source_dataset": null,
+          "shared_catalog": null,
+          "federated": true,
+          "parent_domain": "datasncf",
+          "update_frequency": null
+        },
+        "custom": {
+          "cycle": null,
+          "periodicity": "Annuelle",
+          "test-meta": null
+        }
+      }
+    }
+  ]
+}

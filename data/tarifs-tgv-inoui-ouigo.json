@@ -1,0 +1,115 @@
+{
+  "total_count": 34135,
+  "results": [
+    {
+      "transporteur": "TGV INOUI",
+      "gare_origine": "CANNES",
+      "gare_origine_code_uic": "87757625",
+      "gare_destination": "AIX LES BAINS - LE REVARD",
+      "gare_destination_code_uic": "87741132",
+      "classe": "1",
+      "profil_tarifaire": "Tarif Réglementé",
+      "prix_minimum": 162.4,
+      "prix_maximum": 162.4
+    },
+    {
+      "transporteur": "TGV INOUI",
+      "gare_origine": "CHAMBERY CHALLES LES EAUX",
+      "gare_origine_code_uic": "87741009",
+      "gare_destination": "REDON",
+      "gare_destination_code_uic": "87471300",
+      "classe": "2",
+      "profil_tarifaire": "Tarif Elève - Etudiant - Apprenti",
+      "prix_minimum": 18,
+      "prix_maximum": 18
+    },
+    {
+      "transporteur": "TGV INOUI",
+      "gare_origine": "CHAMBERY CHALLES LES EAUX",
+      "gare_origine_code_uic": "87741009",
+      "gare_destination": "TGV HAUTE PICARDIE",
+      "gare_destination_code_uic": "87313882",
+      "classe": "2",
+      "profil_tarifaire": "Tarif Réglementé",
+      "prix_minimum": 101.3,
+      "prix_maximum": 124.8
+    },
+    {
+      "transporteur": "TGV INOUI",
+      "gare_origine": "ARRAS",
+      "gare_origine_code_uic": "87342014",
+      "gare_destination": "TOULOUSE MATABIAU",
+      "gare_destination_code_uic": "87611004",
+      "classe": "1",
+      "profil_tarifaire": "Tarif Elève - Etudiant - Apprenti",
+      "prix_minimum": 28,
+      "prix_maximum": 28
+    },
+    {
+      "transporteur": "TGV INOUI",
+      "gare_origine": "CARCASSONNE",
+      "gare_origine_code_uic": "87615286",
+      "gare_destination": "CULMONT CHALINDREY",
+      "gare_destination_code_uic": "87142125",
+      "classe": "1",
+      "profil_tarifaire": "Tarif Réglementé",
+      "prix_minimum": 133,
+      "prix_maximum": 133
+    },
+    {
+      "transporteur": "TGV INOUI",
+      "gare_origine": "CHAMBERY CHALLES LES EAUX",
+      "gare_origine_code_uic": "87741009",
+      "gare_destination": "VALOGNES",
+      "gare_destination_code_uic": "87447284",
+      "classe": "2",
+      "profil_tarifaire": "Tarif Normal",
+      "prix_minimum": 25,
+      "prix_maximum": 147
+    },
+    {
+      "transporteur": "TGV INOUI",
+      "gare_origine": "AVIGNON CENTRE",
+      "gare_origine_code_uic": "87765008",
+      "gare_destination": "AEROPORT CDG2 TGV ROISSY",
+      "gare_destination_code_uic": "87271494",
+      "classe": "1",
+      "profil_tarifaire": "Tarif Elève - Etudiant - Apprenti",
+      "prix_minimum": 19,
+      "prix_maximum": 19
+    },
+    {
+      "transporteur": "TGV INOUI",
+      "gare_origine": "CARCASSONNE",
+      "gare_origine_code_uic": "87615286",
+      "gare_destination": "NARBONNE",
+      "gare_destination_code_uic": "87781104",
+      "classe": "1",
+      "profil_tarifaire": "Tarif Elève - Etudiant - Apprenti",
+      "prix_minimum": 15,
+      "prix_maximum": 15
+    },
+    {
+      "transporteur": "TGV INOUI",
+      "gare_origine": "CANNES",
+      "gare_origine_code_uic": "87757625",
+      "gare_destination": "ANNECY",
+      "gare_destination_code_uic": "87746008",
+      "classe": "1",
+      "profil_tarifaire": "Tarif Avantage",
+      "prix_minimum": 21.5,
+      "prix_maximum": 140
+    },
+    {
+      "transporteur": "TGV INOUI",
+      "gare_origine": "CARCASSONNE",
+      "gare_origine_code_uic": "87615286",
+      "gare_destination": "SETE",
+      "gare_destination_code_uic": "87773200",
+      "classe": "1",
+      "profil_tarifaire": "Tarif Normal",
+      "prix_minimum": 14,
+      "prix_maximum": 47
+    }
+  ]
+}

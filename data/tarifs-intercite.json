@@ -1,0 +1,125 @@
+{
+  "total_count": 2542,
+  "results": [
+    {
+      "transporteur": "Intercités de jour à réservation obligatoire",
+      "origine": "PARIS AUSTERLITZ",
+      "origine_uic8": "87547000",
+      "destination": "MONTAUBAN VILLE BOURBON",
+      "destination_uic8": "87611244",
+      "classe": "2",
+      "profil_tarifaire": "Tarif Normal",
+      "type_place": "assise",
+      "prix_min": 15,
+      "prix_max": 87
+    },
+    {
+      "transporteur": "Intercités de jour à réservation obligatoire",
+      "origine": "CAUSSADE TARN ET GARONNE",
+      "origine_uic8": "87613356",
+      "destination": "PARIS BERCY",
+      "destination_uic8": "87686667",
+      "classe": "2",
+      "profil_tarifaire": "Tarif Normal",
+      "type_place": "assise",
+      "prix_min": 15,
+      "prix_max": 85
+    },
+    {
+      "transporteur": "Intercités de jour à réservation obligatoire",
+      "origine": "PARIS GARE DE LYON",
+      "origine_uic8": "87686006",
+      "destination": "ST GERMAIN DES FOSSES",
+      "destination_uic8": "87732206",
+      "classe": "2",
+      "profil_tarifaire": "Tarif Normal",
+      "type_place": "assise",
+      "prix_min": 15,
+      "prix_max": 57
+    },
+    {
+      "transporteur": "Intercités de jour à réservation obligatoire",
+      "origine": "SOUILLAC",
+      "origine_uic8": "87594333",
+      "destination": "VIERZON VILLE",
+      "destination_uic8": "87576009",
+      "classe": "2",
+      "profil_tarifaire": "Tarif Normal",
+      "type_place": "assise",
+      "prix_min": 15,
+      "prix_max": 55
+    },
+    {
+      "transporteur": "Intercités de jour à réservation obligatoire",
+      "origine": "CHATEAUROUX",
+      "origine_uic8": "87597005",
+      "destination": "PARIS GARE DE LYON",
+      "destination_uic8": "87686006",
+      "classe": "2",
+      "profil_tarifaire": "Tarif Normal",
+      "type_place": "assise",
+      "prix_min": 15,
+      "prix_max": 44
+    },
+    {
+      "transporteur": "Intercités de jour à réservation obligatoire",
+      "origine": "NEVERS",
+      "origine_uic8": "87696005",
+      "destination": "PARIS AUSTERLITZ",
+      "destination_uic8": "87547000",
+      "classe": "2",
+      "profil_tarifaire": "Tarif Normal",
+      "type_place": "assise",
+      "prix_min": 15,
+      "prix_max": 43
+    },
+    {
+      "transporteur": "Intercités de jour à réservation obligatoire",
+      "origine": "BRIVE LA GAILLARDE",
+      "origine_uic8": "87594002",
+      "destination": "CAUSSADE TARN ET GARONNE",
+      "destination_uic8": "87613356",
+      "classe": "2",
+      "profil_tarifaire": "Tarif Normal",
+      "type_place": "assise",
+      "prix_min": 14.6,
+      "prix_max": 28
+    },
+    {
+      "transporteur": "Intercités de jour à réservation obligatoire",
+      "origine": "LIMOGES BENEDICTINS",
+      "origine_uic8": "87592006",
+      "destination": "CHATEAUROUX",
+      "destination_uic8": "87597005",
+      "classe": "2",
+      "profil_tarifaire": "Tarif Normal",
+      "type_place": "assise",
+      "prix_min": 13.3,
+      "prix_max": 28
+    },
+    {
+      "transporteur": "Intercités de jour à réservation obligatoire",
+      "origine": "LES AUBRAIS",
+      "origine_uic8": "87543017",
+      "destination": "VIERZON VILLE",
+      "destination_uic8": "87576009",
+      "classe": "2",
+      "profil_tarifaire": "Tarif Normal",
+      "type_place": "assise",
+      "prix_min": 9.9,
+      "prix_max": 19
+    },
+    {
+      "transporteur": "Intercités de jour à réservation obligatoire",
+      "origine": "CARCASSONNE",
+      "origine_uic8": "87615286",
+      "destination": "NARBONNE",
+      "destination_uic8": "87781104",
+      "classe": "2",
+      "profil_tarifaire": "Tarif Normal",
+      "type_place": "assise",
+      "prix_min": 5,
+      "prix_max": 15.5
+    }
+  ]
+}
