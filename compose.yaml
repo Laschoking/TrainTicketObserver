@@ -1,0 +1,26 @@
+services:
+  vendo:
+    image: ghcr.io/public-transport/db-vendo-client
+    environment:
+      - USER_AGENT=trash.mail94@gmx.net
+      - DB_PROFILE=dbnav
+    expose:
+      - "3000"
+  
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx-cache.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - vendo
+  
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example  
+    ports:
+      - 27017:27017
