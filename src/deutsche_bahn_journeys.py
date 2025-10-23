@@ -1,25 +1,36 @@
+### Provide handling for the vendo endpoint to query Deutsche Bahn
+from datetime import datetime
 import requests
-from datetime import datetime
-from pymongo import MongoClient
-from datetime import datetime
+from http import HTTPStatus
 
-BASE_URL = "http://localhost:8080/journeys"
- 
-def request_db_journeys(from_id: int, to_id: int, date: datetime) -> None:
-    """
-    Calls Docker API for db-vendo-client 
-    from https://github.com/public-transport/db-vendo-client/tree/main
-    """
-    params = {
-        # TODO: Add more optional params (bahncard ...)
-        "from": from_id,
-        "to": to_id,
-        #"date": date                          
-    }
+BASE_URL = "http://localhost:8080/journeys"#"https://v6.db.transport.rest/journeys"
 
-    r = requests.get(BASE_URL, params=params)
+
+def request_db_journeys(db_profile, date):
+    print(f"Looking up `{db_profile.origin}({db_profile.from_id})` to `{db_profile.dest} ({db_profile.to_id})` at `{date}`")
+
+    req = requests.Request("GET", BASE_URL, params=db_profile.finalize(date))
+    prepared = req.prepare()
+
+    # Inspect the prepared request
+    print("=== Prepared Request ===")
+    print("Method:", prepared.method)
+    print("URL:", prepared.url)
+    print("Headers:", prepared.headers)
+
+    with requests.Session() as s:
+        r = s.send(prepared)
+        print("\n=== Response ===")
+        print("Status:", r.status_code)
+    
+    if r.status_code != HTTPStatus.OK:
+        return r.status_code, None
+
+    # only works if nginx proxy is enabled
+    print("Cache state: " + r.headers.get("X-Cache-Status"))
     r.raise_for_status()
-    return r.json()
+    return r.status_code, r.json()
+
 
 def data_preprocessing(raw_journey) -> dict:
     """Prepocess to find relevant information for a journey 
@@ -34,8 +45,10 @@ def data_preprocessing(raw_journey) -> dict:
         "origin" : None,
         "destination": None,
         "departure_date": None,
-        "travelling_time": None,
         "departure_time": None,
+        "arrival_date": None,
+        "arrival_time": None,
+        "travelling_time": None,
         "price": {str(datetime.now().replace(microsecond=0).isoformat()): raw_journey.get("price", {}).get("amount", "n/a")},
         "currency" : raw_journey.get("price", {}).get("currency", "n/a"),
         "legs": [],
@@ -55,8 +68,12 @@ def data_preprocessing(raw_journey) -> dict:
         hours = time_delta.days * 24 + time_delta.seconds//3600
         minutes = (time_delta.seconds//60)%60
 
-        document["departure_date"] = toa.date().isoformat()
-        document["departure_time"] = toa.time().replace(microsecond=0).isoformat()
+        document["departure_date"] = tod.date().isoformat()
+        document["departure_time"] = tod.time().replace(microsecond=0).isoformat()
+
+        document["arrival_date"] = toa.date().isoformat()
+        document["arrival_time"] = toa.time().replace(microsecond=0).isoformat()
+
         document["travelling_time"] = f"{hours:02}h:{minutes:02}m"
         
         document["toa"] = tod
@@ -79,42 +96,3 @@ def data_preprocessing(raw_journey) -> dict:
                 "arrival" : arrival,
                 "line" : train,})
     return document
-
-def insert_update_db(mongo_db, journey):
-    """Insert a journey document in the MongoDB database
-    Returns True if write process was successfull."""
-    if mongo_db.journeys.find_one({"refreshToken": journey["refreshToken"]}):
-        # Use time & price of the journey
-        time, price = next(iter(journey["price"].items()))
-        mongo_db.journeys.update_one(
-            {"refreshToken" : journey["refreshToken"]},
-            {"$set": {f"price.{time}": price}}
-            )
-    else:
-        mongo_db.journeys.insert_one(journey)
-    return True
-
-def update_journey(refreshToken):
-    """Update real-time information for an existing journey"""
-
-    return
-
-def mongo_db_client() -> object():
-    """Connect to MongoDB on default host & port"""
-    client = MongoClient("mongodb://root:example@localhost:27017/")
-    mongo_db = client["deutsche_bahn"]
-    mongo_db.journeys.create_index("refreshToken", unique=True)#
-    return mongo_db
-
-
-
-if __name__ == "__main__":
-    # Example: Frankfurt (8000105) → Berlin (8011160)
-    mongo_db = mongo_db_client()
-    data = request_db_journeys("8000105", "8011160", datetime.now())
-    for raw_journey in data.get("journeys", []):
-        journey = data_preprocessing(raw_journey)
-        assert insert_update_db(mongo_db, journey), "Error in Database Writing"
-
-
-# TODO: Check the nginx connection bc. without Internet connection is refused
