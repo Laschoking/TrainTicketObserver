@@ -1,0 +1,32 @@
+
+SELECT DISTINCT ?station ?stationLabel ?ibnr WHERE {
+  # Find Train stations & connecting services
+  # Ensure that central stations are included
+  # Still missing InterCity & EuroRail etc.
+  ?station wdt:P31+/wdt:P279* wd:Q55488;
+           wdt:P17 ?country;
+           wdt:P954 ?ibnr;
+           wdt:P1192 ?trainLine.
+  
+  # Express trains
+{
+    ?trainLine wdt:P17 wd:Q142;
+             wdt:P279*/wdt:P366/wdt:P527 wd:Q964162.
+  }
+  # High speed trains
+  UNION {
+    ?trainLine wdt:P17 wd:Q142;
+             wdt:P279* wd:Q13402959.
+    }
+  # International trains
+    UNION {
+    ?trainLine wdt:P17 wd:Q142;
+             wdt:P279* wd:Q11422381.
+    }
+
+  # Filter for french or german train stations
+  VALUES ?country {wd:Q183  wd:Q142}.
+  #wd:Q142
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],de,fr". } # Helps get the label in your language, if not, then default for all languages, then en language
+  }
+LIMIT 1000
