@@ -1,11 +1,14 @@
 ### Provide handling for the vendo endpoint to query Deutsche Bahn
-from datetime import datetime, timezone
+import datetime as dt
 from zoneinfo import ZoneInfo
 from enum import Enum
 import requests
 from http import HTTPStatus
+from config import *
 
 ## Define a profile for deutsche bahn
+
+BASE_URL = "http://localhost:8080/journeys"#"https://v6.db.transport.rest/journeys"
 
 class LoyaltyCards(str, Enum): 
     NONE = 'None',
@@ -28,33 +31,68 @@ class LoyaltyCards(str, Enum):
     at_klimaticket = 'at-klimaticket'
 
 class DbProfile:
-    def __init__(self, origin, dest, dates : [], age = "adult", tickets = True, results = 100, loyaltyCard = LoyaltyCards, endpoint = "dbnav"):
+    def __init__(self, origin, destination, origin_id= None, destination_id = None, mongo_id = None, age = "adult", computed_journeys = {}, tickets = True, results = 100, firstClass = False, loyaltyCard = LoyaltyCards.NONE, endpoint = "dbnav"):
         self.origin = origin
-        self.from_id = None
-        self.dest = dest
-        self.to_id = None
-        self.dates = dates
+        self.origin_id = origin_id
+        self.destination = destination
+        self.destination_id = destination_id
+        self.mongo_id = mongo_id # from MongoDB
+        self.age = age
+        self.computed_journeys = computed_journeys
         self.tickets = tickets
         self.results = results
-        self.firstClass = False
-        self.age = age
+        self.firstClass = firstClass
         self.loyaltyCard = loyaltyCard
         self.endpoint  = endpoint
-
     
-    def set_from_id(self, from_id):
-        self.from_id = from_id
+    @classmethod
+    def from_dict(cls, profile):
+        assert profile["_id"] is not None
+        return cls( origin = profile["origin"],
+                    destination = profile["destination"],
+                    origin_id = profile["origin_id"],
+                    destination_id = profile["destination_id"],
+                    mongo_id = profile["_id"],
+                    age = profile["age"],
+                    computed_journeys= profile.get("computed_journeys",{}),
+                    tickets = profile["tickets"],
+                    results= profile["results"],
+                    firstClass= profile["firstClass"],
+                    loyaltyCard= profile["loyaltyCard"], 
+                    endpoint=profile["endpoint"])
     
-    def set_to_id(self, to_id):
-            self.to_id = to_id
+    def set_origin_id(self, origin_id):
+        self.origin_id = origin_id
+    
+    def set_destination_id(self, destination_id):
+            self.destination_id = destination_id
 
-    def finalize(self, date):
-        assert self.from_id is not None and self.to_id is not None
+
+
+    def finalize_for_db(self) -> dict:
+        assert self.origin_id is not None and self.destination_id is not None
 
         return {
-        'from' : self.from_id,
-        'to' : self.to_id,
-        'departure' : date,
+        'origin' : self.origin,
+        'destination' : self.destination,
+        'origin_id' : self.origin_id,
+        'destination_id' : self.destination_id,
+        'age' : self.age,
+        'computed_journeys' : self.computed_journeys,
+        'tickets' : self.tickets,
+        'results' : self.results,
+        'firstClass' : self.firstClass,
+        'loyaltyCard' : self.loyaltyCard,
+        'endpoint' : self.endpoint
+        }
+
+    def finalize_for_request(self, date: dt.datetime) -> dict:
+        assert self.origin_id is not None and self.destination_id is not None
+
+        return {
+        'from' : self.origin_id,
+        'to' : self.destination_id,
+        'departure' : date, 
         'tickets' : self.tickets,
         'results' : self.results,
         'firstClass' : self.firstClass,
@@ -64,45 +102,53 @@ class DbProfile:
         }
 
 
+    def update_computed_journeys(self, journeys: list):
+        """Inscribe refreshToken, and departure time of each journey in the corresponding profile"""
+        for journey in journeys:
+            if journey is None:
+                print(f"journey = None detected: {journeys}")
+                continue
+            date = dt.datetime.fromisoformat(journey["departure"]).date()
+            new_trip = {"departure" : journey["departure"], "arrival" : journey["arrival"] , "refreshToken": journey["refreshToken"]}
+            self.computed_journeys.setdefault(date.isoformat(), []).append(new_trip)
 
-BASE_URL = "http://localhost:8080/journeys"#"https://v6.db.transport.rest/journeys"
-
-def date_to_timestamp(date):
-    return datetime.strptime(date, '%a, %d %b %Y %H:%M:%S GMT').replace(tzinfo=timezone.utc).astimezone(ZoneInfo("Europe/Berlin")).isoformat()
+def date_to_timestamp(date : dt.datetime) -> dt.datetime:
+    return dt.datetime.strptime(date, '%a, %d %b %Y %H:%M:%S GMT').replace(tzinfo=dt.timezone.utc).astimezone(ZoneInfo("Europe/Berlin")).isoformat()
 
 
-def new_request(params = {}, path = None):
+def new_request(params = {}, path = None) -> dict:
     if path :
+        print(f"Refreshing journey")
         enc_path = requests.utils.quote(path, safe="")
         url = f"{BASE_URL}/{enc_path}"
     else:
         url = BASE_URL
     req = requests.Request("GET", url, params=params)
     prepared = req.prepare()
-    print("\n=== new request: Prepare  ===")
-    print(prepared.url)
+    if DEBUG:
+        print("\n=== new request: Prepare  ===")
+        print(prepared.url)
     
 
     # Inspect the prepared request
     with requests.Session() as s:
         r = s.send(prepared)
-        print("\n=== new request: Response ===")
-        print("Status:", r.status_code)
+        if DEBUG:
+            print("\n=== new request: Response ===")
+            print("Status:", r.status_code)
         date = r.headers.get("Date")
     time_stamp =  date_to_timestamp(date)
     cache_state = r.headers.get("X-Cache-Status", "Proxy not active")
     
     if r.status_code != HTTPStatus.OK:
+        print(f"Status Code: {r.status_code} is not accepted")
+        print(prepared.url)
         return {'http_status' : r.status_code, 'time_stamp' : time_stamp, 'data': None, 'cache_state' : None}
     else:
         return {'http_status' : r.status_code, 'time_stamp' : time_stamp, 'data': r.json(), 'cache_state' : cache_state}
 
-def new_journey(db_profile, date):
-    print(f"Looking up `{db_profile.origin}({db_profile.from_id})` to `{db_profile.dest} ({db_profile.to_id})` at `{date}`")
-    return new_request(params=db_profile.finalize(date))
 
-def refresh_db_journey(token):
-    return new_request(path=token)
+
     
 
 def data_preprocessing(journey, time_stamp) -> dict:
@@ -118,10 +164,8 @@ def data_preprocessing(journey, time_stamp) -> dict:
     document = {
         "origin" : None,
         "destination": None,
-        "departure_date": None,
-        "departure_time": None,
-        "arrival_date": None,
-        "arrival_time": None,
+        "departure": None,
+        "arrival": None,
         "travelling_time": None,
         "legs": [],
         "refreshToken": journey["refreshToken"],
@@ -131,20 +175,20 @@ def data_preprocessing(journey, time_stamp) -> dict:
     # Use last leg for time of arrival & destination
     if journey["legs"]:
         document["origin"] = journey["legs"][0]["origin"]["name"]
+        document["origin_id"] = journey["legs"][0]["origin"]["id"]
         document["destination"] = journey["legs"][-1]["destination"]["name"]
+        document["destination_id"] = journey["legs"][0]["destination"]["id"]
 
-        tod = datetime.fromisoformat(journey["legs"][0]["departure"])
-        toa = datetime.fromisoformat(journey["legs"][-1]["arrival"])
+        tod = dt.datetime.fromisoformat(journey["legs"][0]["departure"])
+        toa = dt.datetime.fromisoformat(journey["legs"][-1]["arrival"])
         assert toa >= tod, "Time of Arrival should be after or equal the departure"
         time_delta = toa - tod
         hours = time_delta.days * 24 + time_delta.seconds//3600
         minutes = (time_delta.seconds//60)%60
 
-        document["departure_date"] = tod.date().isoformat()
-        document["departure_time"] = tod.time().replace(microsecond=0).isoformat()
+        document["departure"] = tod.isoformat()
 
-        document["arrival_date"] = toa.date().isoformat()
-        document["arrival_time"] = toa.time().replace(microsecond=0).isoformat()
+        document["arrival"] = toa.isoformat()
 
         document["travelling_time"] = f"{hours:02}h:{minutes:02}m"
 

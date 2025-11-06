@@ -2,3 +2,4 @@ trash/
 venv/
 mongodb-mongosh_2.5.8_amd64.deb
 mongodb-org-server_8.0.13_amd64.deb
+src/__pycache__/
