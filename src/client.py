@@ -9,17 +9,6 @@ import mongo_fn
 from config import *
 
 
-def process_trip_results(result : dict) -> list:
-    """Given a list of 
-    """
-    journeys = []
-    if result["http_status"] == HTTPStatus.OK:
-        for data in result.get("data").get("journeys", []):
-            journey = bahn.data_preprocessing(data, result["time_stamp"])
-            journey.update({"cache_state" : result['cache_state']})
-            journeys.append(journey)
-    return journeys
-
 def new_trips(bahn_profile: bahn.DbProfile, date : dt.datetime) -> dict:
     """Request new trips from Vendo-API
     Parameters: bahn-profile - contains relevant information about the passenger
@@ -27,15 +16,27 @@ def new_trips(bahn_profile: bahn.DbProfile, date : dt.datetime) -> dict:
     """
     parameters = bahn_profile.finalize_for_request(date)
     results = bahn.new_request(params=parameters)
-    return process_trip_results(results)
+    journeys = []
+    if results["http_status"] == HTTPStatus.OK:
+        for data in results.get("data").get("journeys", []):
+            journey = bahn.data_preprocessing(journey=data, time_stamp=results["time_stamp"])
+            journey.update({"cache_state" : results['cache_state']})
+            journeys.append(journey)
+    return journeys
 
 
-def update_trips(refreshToken : str) -> dict:
+
+def update_trip(bahn_profile : bahn.DbProfile, refreshToken : str) -> dict:
     """Request a price update from Vendo-API 
     Parameters: refreshToken - a unique ID of an already computed journey"""
-    results = bahn.new_request(path=refreshToken)
-    return process_trip_results(results)
-
+    result = bahn.new_request(path=refreshToken, params=bahn_profile.finalize_for_request(date=None).pop("departure"))
+    if result["http_status"] == HTTPStatus.OK:
+        data = result.get("data").get("journey")
+        journey = bahn.data_preprocessing(journey=data, time_stamp=result["time_stamp"])
+        journey.update({"cache_state" : result['cache_state']})
+        return journey
+    else:
+        return None
 
 
 if __name__ == "__main__":
@@ -45,7 +46,7 @@ if __name__ == "__main__":
     # TODO: Remove dates & query for all days, until no price is displayed
 
     # Create test profile and insert it into MongoDB
-    bahn_profile = bahn.DbProfile(origin = "Frankfurt", destination="Dresden Neustadt", tickets= False, loyaltyCard= bahn.LoyaltyCards.C2BC25, age=27, firstClass=False, results=1, endpoint = 'dbnav')
+    bahn_profile = bahn.DbProfile(origin = "Paris Est", destination="Dresden Neustadt", tickets= True, loyaltyCard= bahn.LoyaltyCards.C2BC25, age=27, firstClass=False, results=1, endpoint = 'dbnav')
     bahn_profile.set_origin_id(mongo_fn.ibnr_from_station_name(mongo_db.stations, bahn_profile.origin))
     bahn_profile.set_destination_id(mongo_fn.ibnr_from_station_name(mongo_db.stations, bahn_profile.destination))
     mongo_fn.insert_profile(mongo_db.profiles, bahn_profile)
@@ -66,10 +67,14 @@ if __name__ == "__main__":
         for trips in computed_journeys.values():
             for journey in trips:
                 datetime = dt.datetime.fromisoformat(journey["departure"])
-                if  datetime.now(tz=ZoneInfo("Europe/Berlin")) < datetime:
-                    if DEBUG: 
-                        print(f"Add journey to update {journey['refreshToken']}")
-                    update_wl.append((profile,journey["departure"], journey["refreshToken"]))
+                now = datetime.now(tz=ZoneInfo("Europe/Berlin"))
+                if now < datetime:
+                    last_updated = mongo_db.journeys.find_one({"refreshToken" : journey["refreshToken"]},{"last_updated": True, "_id": False})
+                    # Verify that journey was not updated recently
+                    if now - datetime.fromisoformat(last_updated["last_updated"]) > UPDATE_TIME_DELTA :
+                        if DEBUG: 
+                            print(f"Add journey to update {journey['refreshToken']}")
+                        update_wl.append((profile,journey["departure"], journey["refreshToken"]))
 
         # Add new trip requests to worklist
         tomorrow = dt.date(year=2025, month=11, day=8)
@@ -103,8 +108,8 @@ if __name__ == "__main__":
     while update_wl:
         request_counter += 1
         profile, departure, refreshToken = update_wl.pop()
-        old_journeys = update_trips(refreshToken) 
-        mongo_fn.insert_update_journeys(mongo_db.journeys, old_journeys)
+        old_journey = update_trip(bahn_profile=profile, refreshToken=refreshToken) 
+        mongo_fn.insert_update_journeys(mongo_db.journeys, [old_journey])
 
     print(f"Made {request_counter} update requests to Vendo API")
 

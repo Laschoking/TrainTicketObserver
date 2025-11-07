@@ -167,6 +167,7 @@ def data_preprocessing(journey, time_stamp) -> dict:
         "departure": None,
         "arrival": None,
         "travelling_time": None,
+        "last_updated" : dt.datetime.now(tz=ZoneInfo("Europe/Berlin")).isoformat(),
         "legs": [],
         "refreshToken": journey["refreshToken"],
         }

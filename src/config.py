@@ -1,4 +1,4 @@
-
+from datetime import timedelta
 # Defines how many seconds to wait after one, non-cached request
 REQUEST_LIMIT = 5 
 
@@ -6,4 +6,4 @@ REQUEST_LIMIT = 5
 DEBUG = False
 
 # Define how often journeys should be updated
-UPDATES_PER_DAY = 1
+UPDATE_TIME_DELTA = timedelta(days=1)

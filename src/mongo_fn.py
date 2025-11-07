@@ -3,6 +3,7 @@
 from pymongo import MongoClient
 from rapidfuzz import process, fuzz, utils
 from deutsche_bahn import DbProfile
+from config import DEBUG
 
 #def create_mongo_client() -> object():
 #    ger_mongo.journeys.create_index("refreshToken", unique=True)
@@ -19,20 +20,29 @@ def connect_mongo_client() -> object():
 def insert_update_journeys(db_journeys, journeys: list):
     """Insert a journey document in the MongoDB database
     Returns True if write process was successfull."""
-    for new_journey in journeys:
+    if journeys is []:
+        print("update/insert failed because no journeys are provided.")
+    for journey in journeys:
         # Verify if journey exists already
-        old_journey = db_journeys.find_one({"refreshToken": new_journey["refreshToken"]})
+        old_journey = db_journeys.find_one({"refreshToken": journey["refreshToken"]})
         if old_journey:
             # Only update price if updates comes from server and not from proxy
             # The cache_state is identical for all journeys from the same request
             # Thus it is not part of each individual journey, but of the batch
 
-            if new_journey["cache_state"] == 'MISS':
-                print(f"Updated journey {new_journey['origin']} -> {new_journey['destination']} with price {new_journey['price']}")
-                old_journey["ticket"][new_journey["time_stamp"]] = new_journey["price"]
+            if journey["cache_state"] != 'FOO': # should be i
+                new_price_dict = journey["ticket"]
+                assert len(new_price_dict) == 1
+                time_stamp, price = next(iter(new_price_dict.items()))
+                db_journeys.update_one({"_id" : old_journey["_id"]},
+                    {"$set" : {"last_updated" : time_stamp,
+                                f"ticket.{time_stamp}" : price}})
+                if DEBUG:
+                    print(f"Updated journey {journey['origin']} -> {journey['destination']} with price {price}")
+
 
         else:
-            db_journeys.insert_one(new_journey)
+            db_journeys.insert_one(journey)
 
 def ibnr_from_station_name(db_stations, station_name):
 
